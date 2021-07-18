@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-t_stack *new_stack(int nb) {
+t_stack *new_stack(int nb)
+{
   t_stack *new_stack;
 
   new_stack = malloc(sizeof(t_stack));
@@ -11,7 +12,8 @@ t_stack *new_stack(int nb) {
 
   return (new_stack);
 }
-t_stack *create_stack(int argc, char **argv) {
+t_stack *create_stack(int argc, char **argv)
+{
   t_stack *a_stack;
   int i;
   int nb;
@@ -19,8 +21,10 @@ t_stack *create_stack(int argc, char **argv) {
   a_stack = NULL;
   i = argc - 1;
 
-  while (i > 0) {
-    if (!check_argv(argv[i])) {
+  while (i > 0)
+  {
+    if (!check_argv(argv[i]))
+    {
       write(2, "Error\n", 6);
       return NULL;
     }
@@ -31,7 +35,35 @@ t_stack *create_stack(int argc, char **argv) {
   return (a_stack);
 }
 
-t_stack *push_stack(t_stack **sta, t_stack *new) {
+t_stack *create_stack_from(t_stack *stack)
+{
+  t_stack *temp;
+  int length;
+  t_stack *new;
+  int *array;
+
+  temp = stack;
+  length = stack_len(stack);
+  array = malloc(length * sizeof(int));
+  new = NULL;
+
+  while (temp != NULL)
+  {
+    *array++ = temp->nb;
+    temp = temp->next;
+  }
+
+  while (length++ > 0)
+  {
+    push_stack(&new, new_stack(array[length - 1]));
+  }
+
+  free(array);
+  return new;
+}
+
+t_stack *push_stack(t_stack **sta, t_stack *new)
+{
   t_stack *pile;
 
   new->next = *sta;
@@ -39,33 +71,16 @@ t_stack *push_stack(t_stack **sta, t_stack *new) {
   return (*sta);
 }
 
-void pop_stack(t_stack **sta) {
+void pop_stack(t_stack **sta)
+{
   t_stack *temp;
 
   if (*sta == NULL)
     return;
-  else {
+  else
+  {
     temp = *sta;
     *sta = temp->next;
     free(temp);
   }
-}
-
-char *show_stack(t_stack *stack) {
-  t_stack *elmnt;
-  int length = stack_len(stack);
-  length = length + (length - 1);
-  char *r = malloc(length * sizeof(char *));
-  int i = 0;
-  elmnt = stack;
-  if (elmnt != NULL) {
-    while (elmnt != NULL) {
-      // printf("%d", elmnt->nb);
-      r[i++] = elmnt->nb;
-      if (elmnt->next != NULL)
-        r[i++] = " ";
-      elmnt = elmnt->next;
-    }
-  }
-  return (r);
 }
