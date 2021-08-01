@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-int debug_enabled = 1;
-
 int stack_len(t_stack *stack)
 {
   int i;
@@ -203,7 +201,7 @@ void show_stack(t_stack *stack)
     s = s->next;
   }
 }
-
+int debug_enabled = 0;
 void debug(t_stack *a, t_stack *b)
 {
   if (debug_enabled == 0)
@@ -302,6 +300,22 @@ int has_lte(t_stack *s, int nb)
   {
     if (st->nb <= nb)
       return 1;
+    st = st->next;
+  }
+  return 0;
+}
+
+int get_btw(t_stack *s, int min, int max, int *result)
+{
+  t_stack *st;
+  st = s;
+  while (st != NULL)
+  {
+    if (st->nb > min && st->nb < max)
+    {
+      *result = st->nb;
+      return 1;
+    }
     st = st->next;
   }
   return 0;
@@ -411,4 +425,18 @@ void find_largest_and_smallest(t_stack *s, int *largest, int *smallest)
 {
   *largest = find_biggest(s);
   *smallest = find_smallest(s);
+}
+
+int get_last(t_stack *s)
+{
+  t_stack *st;
+
+  st = s;
+
+  while (st != NULL)
+  {
+    if (st->next == NULL)
+      return st->nb;
+    st = st->next;
+  }
 }

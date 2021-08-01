@@ -47,6 +47,9 @@ int get_lte(t_stack *s, int nb);
 int is_sorted(t_stack *stack);
 int has_gt(t_stack *s, int nb);
 int find_smallest(t_stack *stack);
+int find_biggest(t_stack *stack);
+int get_btw(t_stack *s, int min, int max, int *result);
+int get_last(t_stack *s);
 
 int check_argv(char *argv);
 

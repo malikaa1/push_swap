@@ -17,8 +17,13 @@ int rotate(t_stack **stack, int nb)
         return -1;
 }
 
-void rotate_a(t_stack **a, int nb, int print)
+void rotate_a(t_stack **a, int nb, int print, int use_reverse)
 {
+    if (use_reverse == 0)
+    {
+        ft_ra(a, print);
+        return;
+    }
     if (rotate(a, nb) == 1)
         ft_ra(a, print);
     else
@@ -33,11 +38,11 @@ void rotate_b(t_stack **b, int nb, int print)
         ft_rrb(b, print);
 }
 
-void move_to_top_a(t_stack **a, int nb, int print)
+void move_to_top_a(t_stack **a, int nb, int print, int use_reverse)
 {
     while (is_on_top(*a, nb) == 0)
     {
-        rotate_a(a, nb, print);
+        rotate_a(a, nb, print, use_reverse);
     }
 }
 
@@ -65,20 +70,20 @@ int compute_moves_b(t_stack *s, int nb)
     return moves;
 }
 
-void move_gt_to_b(t_stack **a, t_stack **b, int n)
+void move_gt_to_b(t_stack **a, t_stack **b, int n, int use_reverse)
 {
     int nb;
     while (has_gt(*a, n) == 1)
     {
         nb = get_gt(*a, n);
-        move_to_top_a(a, nb, 1);
+        move_to_top_a(a, nb, 1, use_reverse);
         debug(*a, *b);
         ft_pb(a, b, 1);
         debug(*a, *b);
     }
 }
 
-void move_to_a(t_stack **a, t_stack **b, int print)
+int move_to_a(t_stack **a, t_stack **b, int print)
 {
     int largest;
     int smallest;
@@ -89,7 +94,7 @@ void move_to_a(t_stack **a, t_stack **b, int print)
     nb_moves_biggest = compute_moves_b(*b, largest);
     nb_moves_smallest = compute_moves_b(*b, smallest);
 
-    if (nb_moves_smallest < nb_moves_biggest)
+    if (nb_moves_smallest <= nb_moves_biggest)
     {
         move_to_top_b(b, smallest, print);
         debug(*a, *b);
@@ -97,6 +102,7 @@ void move_to_a(t_stack **a, t_stack **b, int print)
         debug(*a, *b);
         ft_ra(a, print);
         debug(*a, *b);
+        return 0;
     }
     else
     {
@@ -104,6 +110,7 @@ void move_to_a(t_stack **a, t_stack **b, int print)
         debug(*a, *b);
         ft_pa(a, b, print);
         debug(*a, *b);
+        return 1;
     }
 }
 
@@ -146,7 +153,7 @@ void r_sort_5(t_stack **a, t_stack **b)
 {
     int l;
     l = find_median(a);
-    move_gt_to_b(a, b, l);
+    move_gt_to_b(a, b, l, 1);
     r_sort_3(a);
 
     ft_pa(a, b, 1);
@@ -179,22 +186,26 @@ void sort_small(t_stack **a, t_stack **b)
     return r_sort_5(a, b);
 }
 
-void move_all_to_a(t_stack **a, t_stack **b)
+int move_all_to_a(t_stack **a, t_stack **b)
 {
+    int nb_rotate;
+    nb_rotate = 0;
     while (is_empty(*b) == 0)
     {
-        move_to_a(a, b, 1);
+        nb_rotate += move_to_a(a, b, 1);
         debug(*a, *b);
     }
+
+    return nb_rotate;
 }
 
-void move_all_gt_to_a(t_stack **a, t_stack **b, int median)
+void move_all_gt_to_b(t_stack **a, t_stack **b, int median)
 {
     int nb;
     while (has_gt(*a, median) == 1)
     {
         nb = get_gt(*a, median);
-        move_to_top_a(a, nb, 1);
+        move_to_top_a(a, nb, 1, 1);
         debug(*a, *b);
         ft_pb(a, b, 1);
         debug(*a, *b);
@@ -207,18 +218,22 @@ void move_all_lte_to_b(t_stack **a, t_stack **b, int n)
     while (has_lte(*a, n) == 1)
     {
         nb = get_lte(*a, n);
-        move_to_top_a(a, nb, 1);
+        move_to_top_a(a, nb, 1, 1);
         debug(*a, *b);
         ft_pb(a, b, 1);
         debug(*a, *b);
     }
 }
 
-void move_all_top_numbers_gte_to_end_a(t_stack **a, int n)
+void move_all_to_b(t_stack **a, t_stack **b, int min, int max)
 {
-    while (is_on_top(*a, get_lte(*a, n)))
+    int nb;
+    while (get_btw(*a, min, max, &nb) == 1)
     {
-        ft_ra(a, 1);
+        move_to_top_a(a, nb, 1, 0);
+        debug(*a, *b);
+        ft_pb(a, b, 1);
+        debug(*a, *b);
     }
 }
 
@@ -246,10 +261,10 @@ void sort_medium(t_stack **a, t_stack **b)
     move_all_to_a(a, b);
 
     // move all bigger number to the end of a
-    move_all_top_numbers_gte_to_end_a(a, median);
+    move_all_top_numbers_gt_to_end_a(a, median);
 
     // push all numbers greather than median to stack b
-    move_all_gt_to_a(a, b, median);
+    move_all_gt_to_b(a, b, median);
 
     // push back all numbers to a depending on the number of moves.
     // and move smaller number to the end of stack and keep bigger ones on top of a
@@ -261,43 +276,31 @@ void sort_medium(t_stack **a, t_stack **b)
 
 void sort_big(t_stack **a, t_stack **b)
 {
-    // 1 2 3 4 5 | 6 7 8 9 10 | 11 12 13 14 15 | 16 17 18 19 20
-    // 10 2 1 18 9 20 11 19  8 14  6 12  5  3  4 15 16 13  7 17
-    // 4 2
+
     int length;
-    int chunks = 4;
     int chunk;
     int d;
-    int chunck_start;
+    int chunk_start;
+    int nb_rotate;
 
-    chunk = 1;
+    chunk = 0;
     length = stack_len(*a);
-
-    chunck_start = find_smallest(*a);
-    // while (chunk <= chunks)
-    // {
-    d = find_part(a, (length / 4));
-    printf("d = %d\n", d);
-    move_all_lte_to_b(a, b, d);
-    move_all_to_a(a, b);
-    move_all_top_numbers_gte_to_end_a(a, d);
-    debug(*a, *b);
-
-    chunck_start = d;
-
-    d = find_part(a, (length / 4) * 2);
-    printf("d = %d\n", d);
-    move_all_lte_to_b(a, b, d);
-    move_all_to_a(a, b);
-    move_all_top_numbers_gte_to_end_a(a, d);
-    debug(*a, *b);
-
-    d = find_part(a, (length / 4) * 3);
-    printf("d = %d\n", d);
-    move_all_lte_to_b(a, b, d);
-    move_all_to_a(a, b);
-    move_all_top_numbers_gte_to_end_a(a, d);
-    debug(*a, *b);
+    chunk_start = find_smallest(*a) - 1;
+    while (++chunk <= 4)
+    {
+        d = find_part(a, (length / 4) * chunk);
+        if (chunk == 4)
+            d = find_part(a, ((length / 4) * chunk) - 1);
+        move_all_to_b(a, b, chunk_start, d + 1);
+        if (chunk != 1 && chunk != 4)
+            while (get_last(*a) != chunk_start)
+                ft_ra(a, 1);
+        nb_rotate = move_all_to_a(a, b);
+        while (nb_rotate-- > 0)
+            ft_ra(a, 1);
+        chunk_start = d;
+        debug(*a, *b);
+    }
 }
 
 void sort(t_stack **a, t_stack **b)
@@ -307,9 +310,9 @@ void sort(t_stack **a, t_stack **b)
     if (is_sorted(*a))
         return;
 
-    // if (length <= 5)
-    //     return sort_small(a, b);
-    // else if (length <= 100)
-    //     sort_medium(a, b);
-    return sort_medium(a, b);
+    if (length <= 5)
+        return sort_small(a, b);
+    else if (length <= 100)
+        return sort_medium(a, b);
+    return sort_big(a, b);
 }

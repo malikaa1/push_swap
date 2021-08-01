@@ -5,15 +5,6 @@ void swap(int *a, int *b)
     *b = tmp;
 }
 
-int print_array(int arr[], int length)
-{
-    for (int i = 0; i < length; i++)
-    {
-        printf("%02d ", arr[i]);
-    }
-    printf("\n");
-}
-
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[low];
