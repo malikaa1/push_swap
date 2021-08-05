@@ -17,7 +17,9 @@ int is_reverse_sorted(t_stack *stack)
     }
     return is_sorted;
 }
+
 int debug_enabled = 0;
+
 void show_stack(t_stack *stack)
 {
 
@@ -29,6 +31,7 @@ void show_stack(t_stack *stack)
         s = s->next;
     }
 }
+
 void debug(t_stack *a, t_stack *b)
 {
     if (debug_enabled == 0)

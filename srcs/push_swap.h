@@ -11,7 +11,6 @@ typedef struct s_stack
 } t_stack;
 
 void sort(t_stack **a, t_stack **b);
-
 void ft_sa(t_stack **a, int print);
 void ft_sb(t_stack **b, int print);
 void ft_pa(t_stack **a, t_stack **b, int print);
@@ -23,7 +22,6 @@ void ft_rra(t_stack **a, int print);
 void ft_rrb(t_stack **b, int print);
 void ft_rrr(t_stack **a, t_stack **b, int print);
 void ft_ss(t_stack **a, t_stack **b, int print);
-
 t_stack *ft_reverse_rotate(t_stack **stack);
 t_stack *new_stack(int nb);
 t_stack *push_stack(t_stack **sta, t_stack *new);
@@ -51,7 +49,6 @@ int find_smallest(t_stack *stack);
 int find_biggest(t_stack *stack);
 int get_btw(t_stack *s, int min, int max, int *result);
 int get_last(t_stack *s);
-
 int check_argv(char *argv);
 void sort_medium(t_stack **a, t_stack **b);
 void quick_sort(int arr[], int low, int high);
@@ -61,7 +58,6 @@ void r_sort_2(t_stack **a);
 void r_sort_3(t_stack **a);
 void r_sort_5(t_stack **a, t_stack **b);
 void sort_small(t_stack **a, t_stack **b);
-
 void move_all_top_numbers_gt_to_end_a(t_stack **a, int n);
 void move_all_to_b(t_stack **a, t_stack **b, int min, int max);
 void move_all_lte_to_b(t_stack **a, t_stack **b, int n);
@@ -72,7 +68,6 @@ void move_gt_to_b(t_stack **a, t_stack **b, int n, int use_reverse);
 int compute_moves_b(t_stack *s, int nb);
 void move_to_top_b(t_stack **b, int nb, int print);
 void move_to_top_a(t_stack **a, int nb, int print, int use_reverse);
-
 int rotate(t_stack **stack, int nb);
 void rotate_a(t_stack **a, int nb, int print, int use_reverse);
 void rotate_b(t_stack **b, int nb, int print);

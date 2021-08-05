@@ -22,20 +22,6 @@ void ft_rrr(t_stack **a, t_stack **b, int print)
         printf("rrr\n");
 }
 
-int rotate(t_stack **stack, int nb)
-{
-    int length;
-    int position;
-
-    position = get_position_in_stack(*stack, nb);
-    length = stack_len(*stack);
-
-    if (position <= length / 2)
-        return 1;
-    else
-        return -1;
-}
-
 void rotate_a(t_stack **a, int nb, int print, int use_reverse)
 {
     if (use_reverse == 0)
