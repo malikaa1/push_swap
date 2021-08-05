@@ -11,31 +11,27 @@ void swap(int *a, int *b)
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[low];
-    int i = low;
-    int j = high + 1;
+    int i = low + 1;
+    int j = high;
 
     while (i < j)
     {
-        do
+        while (arr[i] <= pivot)
         {
             i++;
-        } while (arr[i] <= pivot);
+        }
 
-        do
+        while (arr[j] > pivot)
         {
             j--;
-        } while (arr[j] > pivot);
+        }
 
         if (i < j)
         {
             swap(&arr[j], &arr[i]);
-            //print_array(arr, high);
         }
     }
-
     swap(&arr[low], &arr[j]);
-    //print_array(arr, high);
-
     return j;
 }
 
