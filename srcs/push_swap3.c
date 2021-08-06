@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "push_swap.h"
+
 void move_to_top_a(t_stack **a, int nb, int print, int use_reverse)
 {
     while (is_on_top(*a, nb) == 0)
@@ -28,20 +29,21 @@ int compute_moves_b(t_stack *s, int nb)
         moves++;
     }
 
-    free_stack(stack);
+    free_stack(&stack);
     return moves;
 }
 
 void move_gt_to_b(t_stack **a, t_stack **b, int n, int use_reverse)
 {
     int nb;
+
     while (has_gt(*a, n) == 1)
     {
         nb = get_gt(*a, n);
         move_to_top_a(a, nb, 1, use_reverse);
-        debug(*a, *b);
+        //debug(*a, *b);
         ft_pb(a, b, 1);
-        debug(*a, *b);
+        //debug(*a, *b);
     }
 }
 
@@ -59,19 +61,19 @@ int move_to_a(t_stack **a, t_stack **b, int print)
     if (nb_moves_smallest <= nb_moves_biggest)
     {
         move_to_top_b(b, smallest, print);
-        debug(*a, *b);
+        // debug(*a, *b);
         ft_pa(a, b, print);
-        debug(*a, *b);
+        // debug(*a, *b);
         ft_ra(a, print);
-        debug(*a, *b);
+        // debug(*a, *b);
         return 0;
     }
     else
     {
         move_to_top_b(b, largest, print);
-        debug(*a, *b);
+        //debug(*a, *b);
         ft_pa(a, b, print);
-        debug(*a, *b);
+        //debug(*a, *b);
         return 1;
     }
 }

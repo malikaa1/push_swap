@@ -29,7 +29,9 @@ void ft_pab(t_stack **stack_to, t_stack **stack_from)
     *stack_from = from;
     if (!to)
     {
-        to = new_stack(current->nb);
+        //to = new_stack(current->nb);
+        to = current;
+        to->next = NULL;
         *stack_to = to;
     }
     else

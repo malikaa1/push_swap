@@ -6,7 +6,7 @@ LIBFT_FLAGS = -I./libft -L./libft -lft
 LIBFT_DIR =./libft
 SRCS_LIBFT = ${wildcard ./libft/*.c}
 OBJS_LIBFT = ${SRCS_LIBFT:.c=.o}
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 OBJS = ${SRCS:.c=.o}
 $(NAME) : $(OBJS) $(OBJS_LIBFT)
 		@make -C $(LIBFT_DIR)

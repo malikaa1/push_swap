@@ -2,25 +2,9 @@
 
 t_stack *push_stack(t_stack **sta, t_stack *new)
 {
-    t_stack *pile;
-
     new->next = *sta;
     *sta = new;
     return (*sta);
-}
-
-void pop_stack(t_stack **sta)
-{
-    t_stack *temp;
-
-    if (*sta == NULL)
-        return;
-    else
-    {
-        temp = *sta;
-        *sta = temp->next;
-        free(temp);
-    }
 }
 
 int find_smallest(t_stack *stack)

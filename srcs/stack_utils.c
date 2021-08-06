@@ -16,29 +16,46 @@ int stack_len(t_stack *stack)
   return (i);
 }
 
-void free_stack(t_stack *stack)
+extern int nb_free;
+void free_stack(t_stack **stack)
 {
-  t_stack *first;
   t_stack *current;
-
-  while (stack != NULL)
+  t_stack *s;
+  s = *stack;
+  current = NULL;
+  while (s != NULL)
   {
-    current = stack;
-    stack = stack->next;
+    current = s;
+    s = s->next;
     free(current);
+    nb_free++;
+    current = NULL;
   }
+  *stack = NULL;
+}
+extern int nb_malloc;
+t_stack *new_empty_stack()
+{
+  t_stack *s;
+  s = malloc(sizeof(t_stack));
+  if (s != NULL)
+  {
+    s->next = NULL;
+    nb_malloc++;
+    return s;
+  }
+  return NULL;
 }
 
 t_stack *new_stack(int nb)
 {
+
   t_stack *new_stack;
 
-  new_stack = malloc(sizeof(t_stack));
+  new_stack = new_empty_stack();
   if (new_stack == NULL)
     return NULL;
   new_stack->nb = nb;
-  new_stack->next = NULL;
-
   return (new_stack);
 }
 
@@ -60,6 +77,11 @@ t_stack *create_stack(int argc, char **argv)
       return NULL;
     }
     nb = ft_atoi(argv[i]);
+    if ((nb == -1 && argv[i][0] != '-') || (nb == 0 && argv[i][0] == '-'))
+    {
+      write(2, "Error\n", 6);
+      return NULL;
+    }
     a_stack = push_stack(&a_stack, new_stack(nb));
     i--;
   }
