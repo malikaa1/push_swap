@@ -1,4 +1,5 @@
 #include "push_swap.h"
+
 void quick_sort(int arr[], int low, int high)
 {
     int i;
@@ -10,6 +11,7 @@ void quick_sort(int arr[], int low, int high)
         quick_sort(arr, i + 1, high);
     }
 }
+
 void r_sort_2(t_stack **a)
 {
     int length;

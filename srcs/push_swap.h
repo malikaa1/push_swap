@@ -9,6 +9,9 @@ typedef struct s_stack
   int nb;
   struct s_stack *next;
 } t_stack;
+
+void move_max_to_end_a(t_stack** a, int max);
+void do_ra(t_stack** s, int nb_rotate);
 int partition(int arr[], int low, int high);
 void swap(int *a, int *b);
 void sort(t_stack **a, t_stack **b);

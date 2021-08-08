@@ -1,5 +1,5 @@
 #include "push_swap.h"
-//recupere nb sup ou egal a nb
+
 int get_gte(t_stack *s, int nb)
 {
     t_stack *st;
@@ -14,7 +14,6 @@ int get_gte(t_stack *s, int nb)
     return (0);
 }
 
-//recupere nb stric sup a nb
 int get_gt(t_stack *s, int nb)
 {
     t_stack *st;
