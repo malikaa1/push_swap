@@ -16,7 +16,6 @@ int stack_len(t_stack *stack)
   return (i);
 }
 
-extern int nb_free;
 void free_stack(t_stack **stack)
 {
   t_stack *current;
@@ -28,12 +27,11 @@ void free_stack(t_stack **stack)
     current = s;
     s = s->next;
     free(current);
-    nb_free++;
     current = NULL;
   }
   *stack = NULL;
 }
-extern int nb_malloc;
+
 t_stack *new_empty_stack()
 {
   t_stack *s;
@@ -41,7 +39,6 @@ t_stack *new_empty_stack()
   if (s != NULL)
   {
     s->next = NULL;
-    nb_malloc++;
     return s;
   }
   return NULL;
@@ -49,7 +46,6 @@ t_stack *new_empty_stack()
 
 t_stack *new_stack(int nb)
 {
-
   t_stack *new_stack;
 
   new_stack = new_empty_stack();

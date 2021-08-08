@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include "libft.h"
 
 void r_sort_2(t_stack **a)
 {

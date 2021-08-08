@@ -6,11 +6,10 @@
 /*   By: mrahmani <mrahmani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 21:21:51 by mrahmani          #+#    #+#             */
-/*   Updated: 2021/08/06 23:35:05 by mrahmani         ###   ########.fr       */
+/*   Updated: 2021/08/08 11:27:13 by mrahmani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
 int nb_malloc = 0;

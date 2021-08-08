@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include "libft.h"
 
 t_stack *ft_swap_ab(t_stack **stack)
 {

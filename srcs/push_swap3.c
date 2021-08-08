@@ -1,4 +1,3 @@
-#include "libft.h"
 #include "push_swap.h"
 
 void move_to_top_a(t_stack **a, int nb, int print, int use_reverse)

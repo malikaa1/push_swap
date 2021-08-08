@@ -1,9 +1,9 @@
 #ifndef PUSH_SWAP
 #define PUSH_SWAP
-
-#include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+
 typedef struct s_stack
 {
   int nb;
@@ -73,5 +73,10 @@ void move_to_top_a(t_stack **a, int nb, int print, int use_reverse);
 int rotate(t_stack **stack, int nb);
 void rotate_a(t_stack **a, int nb, int print, int use_reverse);
 void rotate_b(t_stack **b, int nb, int print);
+
+int ft_strlen(char *str);
+void ft_putstr(char *str);
+int ft_isdigit(int c);
+int ft_atoi(const char *str);
 
 #endif

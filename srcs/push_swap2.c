@@ -1,4 +1,3 @@
-#include "libft.h"
 #include "push_swap.h"
 
 int move_all_to_a(t_stack **a, t_stack **b)

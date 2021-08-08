@@ -1,4 +1,4 @@
-#include "libft.h"
+
 #include "push_swap.h"
 
 t_stack *ft_rotate(t_stack **stack)
