@@ -36,9 +36,7 @@ void move_all_lte_to_b(t_stack **a, t_stack **b, int n)
     {
         nb = get_lte(*a, n);
         move_to_top_a(a, nb, 1, 1);
-        debug(*a, *b);
         ft_pb(a, b, 1);
-        debug(*a, *b);
     }
 }
 

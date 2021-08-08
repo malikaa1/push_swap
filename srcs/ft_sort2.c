@@ -14,9 +14,18 @@ void sort_medium(t_stack **a, t_stack **b)
     move_all_top_numbers_gt_to_end_a(a, median);
 }
 
+void move_max_to_end_a(t_stack** a, int max){
+    while (get_last(*a) != max)
+        ft_ra(a, 1);
+}
+
+void do_ra(t_stack** s, int nb_rotate){
+    while (nb_rotate-- > 0)
+        ft_ra(s, 1);
+}
+
 void sort_big(t_stack **a, t_stack **b)
 {
-
     int length;
     int chunk;
     int d;
@@ -37,11 +46,9 @@ void sort_big(t_stack **a, t_stack **b)
         else
             move_all_to_b(a, b, chunk_start, d + 1);
         if (chunk != 1 && chunk != 4)
-            while (get_last(*a) != chunk_start)
-                ft_ra(a, 1);
+            move_max_to_end_a(a,chunk_start);
         nb_rotate = move_all_to_a(a, b);
-        while (nb_rotate-- > 0)
-            ft_ra(a, 1);
+        do_ra(a,nb_rotate);
         chunk_start = d;
     }
 }

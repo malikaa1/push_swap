@@ -64,8 +64,11 @@ int find_median(t_stack **stack)
 
 int find_part(t_stack **stack, int index)
 {
-    int stack_length = stack_len(*stack);
-    int *arr = malloc((stack_length) * sizeof(int *));
+    int stack_length;
+    stack_length = stack_len(*stack);
+    int *arr;
+    arr = malloc((stack_length) * sizeof(int *));
+    
     int i = 0;
     t_stack *s = *stack;
     while (s != NULL)
