@@ -1,17 +1,17 @@
-
 #include "push_swap.h"
+
 void ft_rra(t_stack **a, int print)
 {
     ft_reverse_rotate(a);
     if (print)
-        printf("rra\n");
+        ft_putstr("rra\n");
 }
 
 void ft_rrb(t_stack **b, int print)
 {
     ft_reverse_rotate(b);
     if (print)
-        printf("rrb\n");
+        ft_putstr("rrb\n");
 }
 
 void ft_rrr(t_stack **a, t_stack **b, int print)
@@ -19,7 +19,7 @@ void ft_rrr(t_stack **a, t_stack **b, int print)
     ft_reverse_rotate(a);
     ft_reverse_rotate(b);
     if (print)
-        printf("rrr\n");
+        ft_putstr("rrr\n");
 }
 
 void rotate_a(t_stack **a, int nb, int print, int use_reverse)

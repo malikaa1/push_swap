@@ -11,14 +11,18 @@ int ft_strlen(char *str)
     {
         i++;
     }
-    return (i);
+return (i);
 }
 
 void ft_putstr(char *str)
 {
+    printf("%s", str);
+    return;
     int i;
 
     i = 0;
+    if (str == NULL)
+        return;
     while (str[i] != '\0')
     {
         write(1, &str[i], 1);

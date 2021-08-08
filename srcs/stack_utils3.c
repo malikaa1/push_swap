@@ -3,37 +3,40 @@
 int get_gte(t_stack *s, int nb)
 {
     t_stack *st;
+
     st = s;
     while (st != NULL)
     {
         if (st->nb >= nb)
-            return st->nb;
+            return (st->nb);
         st = st->next;
     }
-    return 0;
+    return (0);
 }
 
 //recupere nb stric sup a nb
 int get_gt(t_stack *s, int nb)
 {
     t_stack *st;
+
     st = s;
     while (st != NULL)
     {
         if (st->nb > nb)
-            return st->nb;
+            return (st->nb);
         st = st->next;
     }
-    return 0;
+    return (0);
 }
 
 int is_empty(t_stack *s)
 {
     t_stack *st;
+
     st = s;
     if (st != NULL)
-        return 0;
-    return 1;
+        return (0);
+    return (1);
 }
 
 void find_largest_and_smallest(t_stack *s, int *largest, int *smallest)
@@ -47,11 +50,10 @@ int get_last(t_stack *s)
     t_stack *st;
 
     st = s;
-
     while (st != NULL)
     {
         if (st->next == NULL)
-            return st->nb;
+            return (st->nb);
         st = st->next;
     }
 }

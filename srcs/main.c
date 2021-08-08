@@ -1,19 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrahmani <mrahmani@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/27 21:21:51 by mrahmani          #+#    #+#             */
-/*   Updated: 2021/08/08 11:27:13 by mrahmani         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
-#include <stdio.h>
-int nb_malloc = 0;
-int nb_free = 0;
+
 int has_duplicates(t_stack *a)
 {
   t_stack *stack;
@@ -35,18 +21,17 @@ int has_duplicates(t_stack *a)
     }
     stack = stack->next;
   }
-  return 0;
+  return (0);
 }
 
 int main(int argc, char **argv)
 {
-
   t_stack *a;
   t_stack *b;
   int length;
 
   if (argc <= 1)
-    return 0;
+    return (0);
   a = create_stack(argc, argv);
   if (a == NULL)
     return (1);
@@ -55,13 +40,11 @@ int main(int argc, char **argv)
   {
     write(2, "Error\n", 6);
     free_stack(&a);
-    return 1;
+    return (1);
   }
   sort(&a, &b);
-  debug(a, b);
+  //debug(a, b);
   free_stack(&a);
   free_stack(&b);
-  // printf("nb malloc : %d\n", nb_malloc);
-  // printf("nb free : %d\n", nb_free);
-  return 0;
+  return (0);
 }

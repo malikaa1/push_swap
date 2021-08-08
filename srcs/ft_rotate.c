@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 t_stack *ft_rotate(t_stack **stack)
@@ -46,14 +45,14 @@ void ft_ra(t_stack **a, int print)
 {
     ft_rotate(a);
     if (print)
-        printf("ra\n");
+        ft_putstr("ra\n");
 }
 
 void ft_rb(t_stack **b, int print)
 {
     ft_rotate(b);
     if (print)
-        printf("rb\n");
+        ft_putstr("rb\n");
 }
 
 void ft_rr(t_stack **a, t_stack **b, int print)
@@ -61,5 +60,5 @@ void ft_rr(t_stack **a, t_stack **b, int print)
     ft_rotate(a);
     ft_rotate(b);
     if (print)
-        printf("rr\n");
+        ft_putstr("rr\n");
 }

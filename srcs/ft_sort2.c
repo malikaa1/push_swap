@@ -5,7 +5,6 @@ void sort_medium(t_stack **a, t_stack **b)
     int median;
     int nb;
 
-    debug(*a, *b);
     median = find_median(a);
     move_all_lte_to_b(a, b, median);
     move_all_to_a(a, b);
@@ -44,37 +43,36 @@ void sort_big(t_stack **a, t_stack **b)
         while (nb_rotate-- > 0)
             ft_ra(a, 1);
         chunk_start = d;
-        debug(*a, *b);
     }
 }
 
 void sort_small(t_stack **a, t_stack **b)
 {
-
     int l;
-    l = stack_len(*a);
 
+    l = stack_len(*a);
     if (l == 1)
         return;
     if (l == 2)
-        return r_sort_2(a);
+        return (r_sort_2(a));
     if (l == 3)
         return r_sort_3(a);
     if (l == 4)
-        return sort_4(a, b);
-    return r_sort_5(a, b);
+        return (sort_4(a, b));
+    return (r_sort_5(a, b));
 }
 
 void sort(t_stack **a, t_stack **b)
 {
     int length;
+
     length = stack_len(*a);
     if (is_sorted(*a))
         return;
 
     if (length <= 5)
-        return sort_small(a, b);
+        return (sort_small(a, b));
     else if (length <= 100)
-        return sort_medium(a, b);
-    return sort_big(a, b);
+        return (sort_medium(a, b));
+    return (sort_big(a, b));
 }

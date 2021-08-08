@@ -20,6 +20,7 @@ int compute_moves_b(t_stack *s, int nb)
 {
     int moves;
     t_stack *stack;
+
     stack = create_stack_from(s);
     moves = 0;
     while (is_on_top(stack, nb) == 0)
@@ -29,7 +30,7 @@ int compute_moves_b(t_stack *s, int nb)
     }
 
     free_stack(&stack);
-    return moves;
+    return (moves);
 }
 
 void move_gt_to_b(t_stack **a, t_stack **b, int n, int use_reverse)
@@ -40,9 +41,7 @@ void move_gt_to_b(t_stack **a, t_stack **b, int n, int use_reverse)
     {
         nb = get_gt(*a, n);
         move_to_top_a(a, nb, 1, use_reverse);
-        //debug(*a, *b);
         ft_pb(a, b, 1);
-        //debug(*a, *b);
     }
 }
 
@@ -56,23 +55,17 @@ int move_to_a(t_stack **a, t_stack **b, int print)
     find_largest_and_smallest(*b, &largest, &smallest);
     nb_moves_biggest = compute_moves_b(*b, largest);
     nb_moves_smallest = compute_moves_b(*b, smallest);
-
     if (nb_moves_smallest <= nb_moves_biggest)
     {
         move_to_top_b(b, smallest, print);
-        // debug(*a, *b);
         ft_pa(a, b, print);
-        // debug(*a, *b);
         ft_ra(a, print);
-        // debug(*a, *b);
-        return 0;
+        return (0);
     }
     else
     {
         move_to_top_b(b, largest, print);
-        //debug(*a, *b);
         ft_pa(a, b, print);
-        //debug(*a, *b);
-        return 1;
+        return (1);
     }
 }

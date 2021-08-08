@@ -2,7 +2,6 @@
 
 int check_argv(char *argv)
 {
-
   int i;
   int len;
 

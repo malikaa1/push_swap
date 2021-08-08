@@ -39,6 +39,7 @@ void r_sort_3(t_stack **a)
 void sort_4(t_stack **a, t_stack **b)
 {
     int max;
+
     max = find_biggest(*a);
     move_to_top_a(a, max, 1, 1);
     ft_pb(a, b, 1);
@@ -50,14 +51,13 @@ void sort_4(t_stack **a, t_stack **b)
 void r_sort_5(t_stack **a, t_stack **b)
 {
     int max;
-    max = find_biggest(*a);
-    move_to_top_a(a, max, 1, 1);
-    ft_pb(a, b, 1);
 
     max = find_biggest(*a);
     move_to_top_a(a, max, 1, 1);
     ft_pb(a, b, 1);
-
+    max = find_biggest(*a);
+    move_to_top_a(a, max, 1, 1);
+    ft_pb(a, b, 1);
     r_sort_3(a);
     if ((*b)->nb < (*b)->next->nb)
     {

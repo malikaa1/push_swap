@@ -11,9 +11,9 @@ int find_smallest(t_stack *stack)
 {
     int smallest;
     t_stack *temp;
+
     temp = stack;
     smallest = temp->nb;
-
     while (temp != NULL)
     {
         if (temp->nb < smallest)
@@ -22,15 +22,16 @@ int find_smallest(t_stack *stack)
         }
         temp = temp->next;
     }
-    return smallest;
+    return (smallest);
 }
 
 int find_biggest(t_stack *stack)
 {
-    if (stack == NULL)
-        return (0);
     t_stack *tmp;
     int biggest;
+
+    if (stack == NULL)
+        return (0);
     biggest = stack->nb;
     tmp = stack;
     while (tmp != NULL)
@@ -39,7 +40,6 @@ int find_biggest(t_stack *stack)
             biggest = tmp->nb;
         tmp = tmp->next;
     }
-
     return (biggest);
 }
 
@@ -47,6 +47,7 @@ int is_sorted(t_stack *stack)
 {
     int is_sorted;
     t_stack *s;
+
     s = stack;
     is_sorted = 1;
     while (s != NULL)
@@ -58,5 +59,5 @@ int is_sorted(t_stack *stack)
         }
         s = s->next;
     }
-    return is_sorted;
+    return (is_sorted);
 }

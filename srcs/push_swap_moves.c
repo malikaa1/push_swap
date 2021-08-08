@@ -7,11 +7,10 @@ int rotate(t_stack **stack, int nb)
 
     position = get_position_in_stack(*stack, nb);
     length = stack_len(*stack);
-
     if (position <= length / 2)
-        return 1;
+        return (1);
     else
-        return -1;
+        return (-1);
 }
 
 void ft_pab(t_stack **stack_to, t_stack **stack_from)
@@ -29,7 +28,6 @@ void ft_pab(t_stack **stack_to, t_stack **stack_from)
     *stack_from = from;
     if (!to)
     {
-        //to = new_stack(current->nb);
         to = current;
         to->next = NULL;
         *stack_to = to;
@@ -45,12 +43,12 @@ void ft_pa(t_stack **a, t_stack **b, int print)
 {
     ft_pab(a, b);
     if (print)
-        printf("pa\n");
+        ft_putstr("pa\n");
 }
 
 void ft_pb(t_stack **a, t_stack **b, int print)
 {
     ft_pab(b, a);
     if (print)
-        printf("pb\n");
+        ft_putstr("pb\n");
 }

@@ -19,14 +19,14 @@ void ft_sa(t_stack **a, int print)
 {
     ft_swap_ab(a);
     if (print)
-        printf("sa\n");
+        ft_putstr("sa\n");
 }
 
 void ft_sb(t_stack **b, int print)
 {
     ft_swap_ab(b);
     if (print)
-        printf("sb\n");
+        ft_putstr("sb\n");
 }
 
 void ft_ss(t_stack **a, t_stack **b, int print)
@@ -34,5 +34,5 @@ void ft_ss(t_stack **a, t_stack **b, int print)
     ft_swap_ab(a);
     ft_swap_ab(b);
     if (print)
-        printf("ss\n");
+        ft_putstr("ss\n");
 }

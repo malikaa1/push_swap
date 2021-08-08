@@ -2,7 +2,9 @@
 
 void swap(int *a, int *b)
 {
-    int tmp = *a;
+    int tmp;
+    
+    tmp = *a;
     *a = *b;
     *b = tmp;
 }
@@ -10,9 +12,11 @@ void swap(int *a, int *b)
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[low];
-    int i = low + 1;
-    int j = high;
+    int i;
+    int j;
 
+    i = low + 1;
+    j = high;
     while (i < j)
     {
         while (arr[i] <= pivot)
@@ -31,14 +35,16 @@ int partition(int arr[], int low, int high)
         }
     }
     swap(&arr[low], &arr[j]);
-    return j;
+    return (j);
 }
 
 void quick_sort(int arr[], int low, int high)
 {
+    int i;
+    
     if (low < high)
     {
-        int i = partition(arr, low, high);
+        i = partition(arr, low, high);
         quick_sort(arr, low, i - 1);
         quick_sort(arr, i + 1, high);
     }
