@@ -15,23 +15,6 @@ int stack_len(t_stack *stack)
   return (i);
 }
 
-void free_stack(t_stack **stack)
-{
-  t_stack *current;
-  t_stack *s;
-
-  s = *stack;
-  current = NULL;
-  while (s != NULL)
-  {
-    current = s;
-    s = s->next;
-    free(current);
-    current = NULL;
-  }
-  *stack = NULL;
-}
-
 t_stack *new_empty_stack()
 {
   t_stack *s;

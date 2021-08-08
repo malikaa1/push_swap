@@ -61,3 +61,12 @@ int ft_atoi(const char *str)
     }
     return (num * neg);
 }
+
+void swap(int *a, int *b)
+{
+    int tmp;
+    
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}

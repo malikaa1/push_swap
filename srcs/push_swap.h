@@ -9,7 +9,8 @@ typedef struct s_stack
   int nb;
   struct s_stack *next;
 } t_stack;
-
+int partition(int arr[], int low, int high);
+void swap(int *a, int *b);
 void sort(t_stack **a, t_stack **b);
 void ft_sa(t_stack **a, int print);
 void ft_sb(t_stack **b, int print);

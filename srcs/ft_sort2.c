@@ -76,3 +76,32 @@ void sort(t_stack **a, t_stack **b)
         return (sort_medium(a, b));
     return (sort_big(a, b));
 }
+
+int partition(int arr[], int low, int high)
+{
+    int pivot = arr[low];
+    int i;
+    int j;
+
+    i = low + 1;
+    j = high;
+    while (i < j)
+    {
+        while (arr[i] <= pivot)
+        {
+            i++;
+        }
+
+        while (arr[j] > pivot)
+        {
+            j--;
+        }
+
+        if (i < j)
+        {
+            swap(&arr[j], &arr[i]);
+        }
+    }
+    swap(&arr[low], &arr[j]);
+    return (j);
+}
