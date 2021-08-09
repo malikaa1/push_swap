@@ -1,72 +1,68 @@
 #include "push_swap.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (str == NULL)
-        return (0);
-    while (str[i] != '\0')
-    {
-        i++;
-    }
-return (i);
+	i = 0;
+	if (str == NULL)
+		return (0);
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-    printf("%s", str);
-    return;
-    int i;
+	printf("%s", str);
+		return ;
+	int	i;
 
-    i = 0;
-    if (str == NULL)
-        return;
-    while (str[i] != '\0')
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
-    if (c <= '9' && c >= '0')
-        return (1);
-    return (0);
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    int neg;
-    int i;
-    int num;
+	int	neg;
+	int	i;
+	int	num;
 
-    i = 0;
-    neg = 1;
-    num = 0;
-    while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-        i++;
-    if (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            neg *= -1;
-        i++;
-    }
-    while (str[i] >= 48 && str[i] <= 57)
-    {
-        num = num * 10 + (str[i] - 48);
-        i++;
-    }
-    return (num * neg);
+	i = 0;
+	neg = 1;
+	num = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		num = num * 10 + (str[i] - 48);
+		i++;
+	}
+	return (num * neg);
 }
 
-void swap(int *a, int *b)
+void	swap(int *a, int *b)
 {
-    int tmp;
-    
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
