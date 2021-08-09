@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	t_rra(t_stack **a, int print)
+void	ft_rra(t_stack **a, int print)
 {
 	ft_reverse_rotate(a);
 	if (print)
