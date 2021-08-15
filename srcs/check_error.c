@@ -6,16 +6,17 @@ int	check_argv(char *argv)
 	int		len;
 
 	i = 0;
-	len = ft_strlen(argv);
-	if (argv[i] == '-' && !ft_isdigit(argv[i + 1]))
+	len = len_arg(argv);
+	if (len == 0)
 		return (0);
-	if (argv[i] == '-' && len == 1)
-		return (0);
-	if (argv[i] == '-' && ft_isdigit(argv[i + 1]) && len > 1)
+	while (argv[i] == '\f' || argv[i] == '\t' || argv[i] == '\v'
+		|| argv[i] == '\r' || argv[i] == '\n' || argv[i] == ' ')
 		i++;
-	while (argv[i])
+	if (argv[i] == '-' || argv[i] == '+')
+		i++;
+	while (argv[i] != '\0')
 	{
-		if (!ft_isdigit(argv[i]))
+		if (isdigit(argv[i]) == 0)
 			return (0);
 		i++;
 	}

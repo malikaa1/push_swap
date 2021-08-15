@@ -45,11 +45,10 @@ int	find_biggest(t_stack *stack)
 
 int	find_median(t_stack **stack)
 {
-	int	stack_length;
-	int	*arr;
-	int	i;
-	int	median;
-	int	index;
+	int		stack_length;
+	int		*arr;
+	int		i;
+	int		median;
 	t_stack	*s;
 
 	stack_length = stack_len(*stack);
@@ -62,8 +61,7 @@ int	find_median(t_stack **stack)
 		s = s->next;
 	}
 	quick_sort(arr, 0, stack_length - 1);
-	index = stack_length / 2;
-	median = arr[index];
+	median = arr[stack_length / 2];
 	free(arr);
 	return (median);
 }

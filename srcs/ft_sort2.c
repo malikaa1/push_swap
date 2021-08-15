@@ -30,7 +30,7 @@ void	sort_big(t_stack **a, t_stack **b)
 		d = find_part(a, (length / 4) * chunk);
 		if (chunk == 4)
 		{
-			d = find_part(a, ((length / 4) * chunk) - 1);
+			//d = find_part(a, ((length / 4) * chunk) - 1);
 			move_all_to_b(a, b, chunk_start, find_biggest(*a) + 1);
 		}
 		else

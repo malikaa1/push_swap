@@ -49,17 +49,17 @@ t_stack	*create_stack(int argc, char **argv)
 	i = argc - 1;
 	while (i > 0)
 	{
-		if (!check_argv(argv[i]))
-		{
-			write(2, "Error\n", 6);
-			return (NULL);
+		 if (!check_argv(argv[i]))
+		 {
+		 	write(2, "Error\n", 6);
+		 	return (NULL);
 		}
-		nb = ft_atoi(argv[i]);
-		if ((nb == -1 && argv[i][0] != '-') || (nb == 0 && argv[i][0] == '-'))
-		{
-			write(2, "Error\n", 6);
-			return (NULL);
-		}
+		nb = parse_arg(argv[i]);
+		 if ((nb == -1 && argv[i][0] != '-') || (nb == 0 && argv[i][0] == '-'))
+		 {
+		 	write(2, "Error\n", 6);
+		 	return (NULL);
+		 }
 		a_stack = push_stack(&a_stack, new_stack(nb));
 		i--;
 	}

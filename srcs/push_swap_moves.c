@@ -43,12 +43,12 @@ void	ft_pa(t_stack **a, t_stack **b, int print)
 {
 	ft_pab(a, b);
 	if (print)
-		ft_putstr("pa\n");
+		ft_write("pa\n");
 }
 
 void	ft_pb(t_stack **a, t_stack **b, int print)
 {
 	ft_pab(b, a);
 	if (print)
-		ft_putstr("pb\n");
+		ft_write("pb\n");
 }

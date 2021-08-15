@@ -42,7 +42,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	sort(&a, &b);
-	debug(a, b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

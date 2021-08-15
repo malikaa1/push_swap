@@ -8,7 +8,6 @@ int	move_all_to_a(t_stack **a, t_stack **b)
 	while (is_empty(*b) == 0)
 	{
 		nb_rotate += move_to_a(a, b, 1);
-		debug(*a, *b);
 	}
 	return (nb_rotate);
 }

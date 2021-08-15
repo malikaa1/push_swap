@@ -4,14 +4,14 @@ void	ft_rra(t_stack **a, int print)
 {
 	ft_reverse_rotate(a);
 	if (print)
-		ft_putstr("rra\n");
+		ft_write("rra\n");
 }
 
 void	ft_rrb(t_stack **b, int print)
 {
 	ft_reverse_rotate(b);
 	if (print)
-		ft_putstr("rrb\n");
+		ft_write("rrb\n");
 }
 
 void	ft_rrr(t_stack **a, t_stack **b, int print)
@@ -19,7 +19,7 @@ void	ft_rrr(t_stack **a, t_stack **b, int print)
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
 	if (print)
-		ft_putstr("rrr\n");
+		ft_write("rrr\n");
 }
 
 void	rotate_a(t_stack **a, int nb, int print, int use_reverse)
